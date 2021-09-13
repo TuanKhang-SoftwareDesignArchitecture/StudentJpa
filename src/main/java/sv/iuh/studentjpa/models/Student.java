@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name = "studentjpa")
 public class Student {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
     @Column(name = "name")
@@ -15,11 +16,8 @@ public class Student {
     @Column(name = "email")
     private String email;
 
-    public Student(Long id, String name, String phone, String email) {
-        this.id = id;
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
+    public Student() {
+
     }
 
     public Long getId() {
