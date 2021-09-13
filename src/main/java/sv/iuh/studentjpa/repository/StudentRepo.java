@@ -11,12 +11,12 @@ import java.util.List;
 
 public interface StudentRepo extends JpaRepository<Student, Long> {
     @Modifying
-    @Query(value="delete from studentjpa where id= :id", nativeQuery = true)
+    @Query("delete from Student u where u.id= :id")
     void deleteStudent(@Param("id") Long id);
     @Modifying
-    @Query(value="update studentjpa set email = :email where id = :id", nativeQuery=true)
+    @Query("update Student u set u.email = :email where u.id = :id")
     void updateStudent(String email, Long id);
-    @Query(value="SELECT * FROM studentjpa u",nativeQuery=true)
+    @Query("SELECT u FROM Student u")
     List<Student> findAlStudent();
 
 }
