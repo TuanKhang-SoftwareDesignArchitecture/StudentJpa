@@ -1,10 +1,11 @@
 package sv.iuh.studentjpa.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "studentjpa")
-public class Student {
+public class Student implements Serializable {
     @Id
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
@@ -14,6 +15,9 @@ public class Student {
     private String phone;
     @Column(name = "email")
     private String email;
+
+    public Student() {
+    }
 
     public Student(Long id, String name, String phone, String email) {
         this.id = id;
@@ -52,5 +56,15 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
